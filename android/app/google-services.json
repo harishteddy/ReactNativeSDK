@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "389961527712",
+    "project_id": "loginandregister-reactnative",
+    "storage_bucket": "loginandregister-reactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389961527712:android:f71ee9bf7140a7088174c5",
+        "android_client_info": {
+          "package_name": "com.reactsdk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389961527712-n4hvqhvqgjnunemi25mcgov4neg3i7oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABzMV2kDsftCFjhAqCKsjOE4AWqTg0ZZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389961527712-n4hvqhvqgjnunemi25mcgov4neg3i7oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
