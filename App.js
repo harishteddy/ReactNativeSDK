@@ -8,7 +8,9 @@
 import React, { useEffect } from 'react';
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert } from 'react-native';
 import { Colors, Header, LearnMoreLinks } from 'react-native/Libraries/NewAppScreen';
-import SmartechReact, { SmartechPushReact, SmartechAppInboxReact, SmartechBaseReact } from 'smartech-base-react-native';
+import SmartechReact from 'smartech-base-react-native';
+
+const SmartechAppInboxReact = require('smartech-appinbox-react-native');
 
 const App: React.FC = (): JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -37,7 +39,7 @@ const App: React.FC = (): JSX.Element => {
   }, []);
 
   const appinboxdata = () => {
-    SmartechBaseReact.login("harish@gmail.com");
+    SmartechReact.login("harish@gmail.com");
 
     SmartechAppInboxReact.getAppInboxCategoryList((error: any, categoryList: any) => {
       if (error) {

@@ -12,6 +12,7 @@ import com.netcore.android.Smartech;
 import com.netcore.android.logger.SMTDebugLevel;
 import com.netcore.android.smartechpush.SmartPush;
 import com.netcore.android.smartechpush.notification.SMTNotificationOptions;
+import com.smartechbasereactnative.SmartechBasePlugin;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -62,7 +63,8 @@ public class MainApplication extends Application implements ReactApplication {
       Smartech.getInstance(new WeakReference<>(this)).trackAppInstallUpdateBySmartech();
       Smartech smartech = Smartech.getInstance(new WeakReference<>(this.getApplicationContext()));
       smartech.setDebugLevel(SMTDebugLevel.Level.VERBOSE);
-
+      SmartechBasePlugin smartechBasePlugin = SmartechBasePlugin.getInstance();
+      smartechBasePlugin.init(this);
 
 
       try {
