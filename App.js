@@ -6,14 +6,17 @@
  */
 
 import React, { useEffect } from 'react';
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View, TouchableOpacity, Alert } from 'react-native';
+import {
+  SafeAreaView, ScrollView, StatusBar, StyleSheet,
+  Text, useColorScheme, View, TouchableOpacity, Alert,
+} from 'react-native';
 import { Colors, Header, LearnMoreLinks } from 'react-native/Libraries/NewAppScreen';
 import SmartechReact from 'smartech-base-react-native';
-
 const SmartechAppInboxReact = require('smartech-appinbox-react-native');
 
 const App: React.FC = (): JSX.Element => {
   const isDarkMode = useColorScheme() === 'dark';
+
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
@@ -23,87 +26,56 @@ const App: React.FC = (): JSX.Element => {
       console.log('Smartech Data :: ', smartechData);
       console.log('Smartech Deeplink :: ', smartechData.smtDeeplink);
       console.log('Smartech CustomPayload:: ', smartechData.smtCustomPayload);
-   };
- 
+    };
 
-    // Deeplink callback for Push Notification, InappMessage and AppInbox
     SmartechReact.addListener(SmartechReact.SmartechDeeplink, handleDeeplinkWithPayload);
-    
 
-    
-
-    // Remove listener on cleanup
-    return function cleanup() {
+    return () => {
       SmartechReact.removeListener(SmartechReact.SmartechDeeplink);
     };
   }, []);
 
   const appinboxdata = () => {
+    // Ensure login is done first
     SmartechReact.login("harish@gmail.com");
 
-    SmartechAppInboxReact.getAppInboxCategoryList((error: any, categoryList: any) => {
-      if (error) {
-        console.error('Error fetching category list:', error);
-        return;
-      }
-      console.log('App Inbox Category List:', categoryList);
-    });
+    // Delay API calls to ensure login is processed
+    setTimeout(() => {
+      SmartechAppInboxReact.getAppInboxCategoryList((error, categoryList) => {
+        
+        console.log('App Inbox Category List:', categoryList);
+      });
 
-    SmartechAppInboxReact.getAppInboxMessagesByApiCall(10, 1, ["harish"], (error: any, appInboxMessages: any) => {
-      if (error) {
-        console.error('Error fetching app inbox messages:', error);
-        return;
-      }
+      SmartechAppInboxReact.getAppInboxMessagesByApiCall(10, 1, ["harish"], (error, appInboxMessages) => {
+        
       console.log('App Inbox Messages:', appInboxMessages);
-    });
+      });
 
-    SmartechAppInboxReact.getAppInboxMessageCount(3, (error: any, count: any) => {
-      if (error) {
-        console.error('Error fetching app inbox message count:', error);
-        return;
-      }
-      console.log('App Inbox Message Count:', count);
-    });
+      SmartechAppInboxReact.getAppInboxMessageCount(3, (error, count) => {
+       
+        console.log('App Inbox Message Count:', count);
+      });
 
-    SmartechAppInboxReact.getAppInboxMessages(0, (error: any, appInboxMessages: any) => {
-      if (error) {
-        console.error('Error fetching app inbox messages:', error);
-        return;
-      }
-      console.log('App Inbox Messages:', appInboxMessages);
-    });
+      SmartechAppInboxReact.getAppInboxMessages(1, (error, appInboxMessages) => {
+    
+        console.log('App Inbox Messages:', appInboxMessages);
+      });
 
-    SmartechAppInboxReact.getAppInboxMessagesWithCategory(["harish"], (error: any, appInboxMessages: any) => {
-      if (error) {
-        console.error('Error fetching app inbox messages with category:', error);
-        return;
-      }
-      console.log('App Inbox Messages with Category:', appInboxMessages);
-      Alert.alert(JSON.stringify(appInboxMessages));
-    });
+      SmartechAppInboxReact.getAppInboxMessagesWithCategory(["harish"], (error, appInboxMessages) => {
+        
+        console.log('App Inbox Messages with Category:', appInboxMessages);
+        Alert.alert("Inbox", JSON.stringify(appInboxMessages));
+      });
+    }, 1500); // wait for login to complete
   };
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} backgroundColor={backgroundStyle.backgroundColor} />
+      <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
         <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}
-        >
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            activeOpacity={0.5}
-            onPress={appinboxdata}
-          >
+        <View style={{ backgroundColor: isDarkMode ? Colors.black : Colors.white }}>
+          <TouchableOpacity style={styles.buttonStyle} onPress={appinboxdata}>
             <Text style={styles.buttonTextStyle}>AppInbox</Text>
           </TouchableOpacity>
           <LearnMoreLinks />

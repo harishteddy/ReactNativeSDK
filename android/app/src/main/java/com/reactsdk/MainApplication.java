@@ -62,7 +62,7 @@ public class MainApplication extends Application implements ReactApplication {
       Smartech.getInstance(new WeakReference<>(this)).initializeSdk(this);
       Smartech.getInstance(new WeakReference<>(this)).trackAppInstallUpdateBySmartech();
       Smartech smartech = Smartech.getInstance(new WeakReference<>(this.getApplicationContext()));
-      smartech.setDebugLevel(SMTDebugLevel.Level.VERBOSE);
+      smartech.setDebugLevel(9);
       SmartechBasePlugin smartechBasePlugin = SmartechBasePlugin.getInstance();
       smartechBasePlugin.init(this);
 

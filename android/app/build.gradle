@@ -135,6 +135,7 @@ dependencies {
     api "com.netcore.android:smartech-sdk:${SMARTECH_BASE_SDK_VERSION}"
     api "com.netcore.android:smartech-push:${SMARTECH_PUSH_SDK_VERSION}"
     api "com.netcore.android:smartech-appinbox:${SMARTECH_APPINBOX_SDK_VERSION}"
+    implementation 'com.netcore.android:smartech-nudges:10.2.3'
 
 
 

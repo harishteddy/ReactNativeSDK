@@ -12,15 +12,15 @@
 
         <meta-data
             android:name="SMT_APP_ID"
-            android:value="bc27f59e25ec1dcc74f343111fb05190" />
+            android:value="cc8ef5ea95a4e3a080cb2fb77b30795a" />
 
         <meta-data
             android:name="HANSEL_APP_ID"
-            android:value="4JCES0SLPJ9IXBFJPCL9HMFNG" />
+            android:value="ONX0I456UAVC09PSM8991PKAR" />
 
         <meta-data
             android:name="HANSEL_APP_KEY"
-            android:value="C31BP9DA1MF5XTVCSEHL4KPLO527ARBPJD36DUDLAR6UQJX0MI" />
+            android:value="TP2AME83E1WWLSCF7GRBXI4OSH922W94PQJFLN3YP21L0X5QEN" />
 
         <activity
         android:name=".MainActivity"
@@ -33,6 +33,16 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+
+
+        <intent-filter>
+    <action android:name="android.intent.action.VIEW" />
+
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+
+    <data android:scheme="sample" />
+</intent-filter>
       </activity>
 
         <service

@@ -8,6 +8,8 @@ import com.smartechpushreactnative.SmartechPushReactNativeModule;
 
 import android.os.Bundle;
 
+import io.hansel.hanselsdk.Hansel;
+
 
 public class MainActivity extends ReactActivity {
 
@@ -23,6 +25,9 @@ public class MainActivity extends ReactActivity {
    @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+
+     Hansel.pairTestDevice(getIntent().getDataString());
   }
   
   /**

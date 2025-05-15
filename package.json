@@ -13,8 +13,9 @@
     "react": "18.2.0",
     "react-native": "^0.72.15",
     "smartech-appinbox-react-native": "^3.5.1",
-    "smartech-base-react-native": "^3.5.2",
-    "smartech-push-react-native": "^3.5.0"
+    "smartech-base-react-native": "^3.5.3",
+    "smartech-push-react-native": "^3.5.0",
+    "smartech-reactnative-nudges": "^1.0.22"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
